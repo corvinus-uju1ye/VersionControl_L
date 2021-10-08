@@ -14,6 +14,8 @@ namespace ExcelExportWeek4
 {
     public partial class Form1 : Form
     {
+        private int _million= (int) Math.Pow(10, 6);
+
         RealEstateEntities context = new RealEstateEntities();
         List<Flat> lakasok;
         Excel.Application xlApp;
@@ -26,12 +28,10 @@ namespace ExcelExportWeek4
             LoadData();
             CreateExcel();
         }
-
         public void LoadData ()
         {
             lakasok = context.Flats.ToList();
         }
-
         public void CreateExcel()
         {
             try
@@ -58,10 +58,81 @@ namespace ExcelExportWeek4
             }
             
         }
-
         private void CreateTable()
-        { 
-         
+        {
+
+            string[] headers = new string[]
+            {
+               "Kód",
+               "Eladó",
+               "Oldal",
+               "Kerület",
+               "Lift",
+               "Szobák száma",
+               "Alapterület (m2)",
+               "Ár (mFt)",
+               "Négyzetméter ár (Ft/m2)"
+            };
+
+            for (int i = 0; i < headers.Length; i++)
+            {
+                xlSheet.Cells[1, i+1] = headers[i];
+            }
+
+            object[,] values = new object[lakasok.Count,headers.Length];
+            int counter = 0;
+            int floorColumn = 6;
+            int numberOfRoomColumn = 5;
+            foreach (var lakas in lakasok)
+            {
+                if (lakas.Elevator)
+                {
+                    values[counter, 4] = "Van";
+                }
+                else
+                {
+                    values[counter, 4] = "Nincs";
+                }
+                values[counter, 0] = lakas.Code;
+                values[counter, 1] = lakas.Vendor;
+                values[counter, 2] = lakas.Side;
+                values[counter, 3] = lakas.District;
+                
+                values[counter, numberOfRoomColumn] = lakas.NumberOfRooms;
+                values[counter, floorColumn] = lakas.FloorArea;
+                values[counter, 7] = lakas.Price;
+                values[counter, 8] = string.Format("={0}/{1}*1000000",
+                    GetCell(counter+2,numberOfRoomColumn+1),
+                    GetCell(counter + 2, floorColumn + 1),
+                    _million.ToString());
+                counter++;
+            }
+
+             var range=xlSheet.get_Range(
+                 GetCell(2, 1),
+                 GetCell(1+values.GetLength(0), values.GetLength(1)));
+
+            range.Value2 = values;
+
+            //xlSheet.get_Range(
+            // GetCell(2, 1),
+            // GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
+        }
+        private string GetCell(int x, int y)
+        {
+            string ExcelCoordinate = "";
+            int dividend = y;
+            int modulo;
+
+            while (dividend > 0)
+            {
+                modulo = (dividend - 1) % 26;
+                ExcelCoordinate = Convert.ToChar(65 + modulo).ToString() + ExcelCoordinate;
+                dividend = (int)((dividend - modulo) / 26);
+            }
+            ExcelCoordinate += x.ToString();
+
+            return ExcelCoordinate;
         }
     }
 }
