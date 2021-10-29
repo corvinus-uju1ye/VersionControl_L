@@ -8,16 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using tasks_week06_webszolg.Entities;
 using tasks_week06_webszolg.MNBServiceReference;
 
 namespace tasks_week06_webszolg
 {
     public partial class Form1 : Form
     {
+        BindingList<RateData> Rates = new BindingList<RateData>();
+
+
         public Form1()
         {
             InitializeComponent();
             Consume();
+            dataGridView1.DataSource = Rates;
 
         }
 
