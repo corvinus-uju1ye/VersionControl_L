@@ -28,9 +28,13 @@ namespace tasks_week06_webszolg
             request.currencyNames="EUR";
             request.startDate = "2020-01-01";
             request.endDate = "2020-06-30";
+
             var response=mnbService.GetExchangeRates(request);
             string result= response.GetExchangeRatesResult;
+            
             File.WriteAllText("export.xml", result);
+
+            
         }
     }
 }
