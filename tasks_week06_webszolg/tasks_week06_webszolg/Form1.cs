@@ -23,11 +23,18 @@ namespace tasks_week06_webszolg
         public Form1()
         {
             InitializeComponent();
-            string xmlstring=Consume();
+            RefreshData();
+
+        }
+
+        private void RefreshData()
+        {
+            Rates.Clear();
+
+            string xmlstring = Consume();
             LoadXml(xmlstring);
             dataGridView1.DataSource = Rates;
             Charting();
-
         }
 
         private void Charting()
@@ -74,9 +81,9 @@ namespace tasks_week06_webszolg
         {
             MNBArfolyamServiceSoapClient mnbService = new MNBArfolyamServiceSoapClient();
             GetExchangeRatesRequestBody request = new GetExchangeRatesRequestBody();
-            request.currencyNames="EUR";
-            request.startDate = "2020-01-01";
-            request.endDate = "2020-06-30";
+            request.currencyNames = comboBox1.SelectedItem.ToString();
+            request.startDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+            request.endDate = dateTimePicker2.Value.ToString("yyyy-MM-dd"); 
 
             var response=mnbService.GetExchangeRates(request);
             string result= response.GetExchangeRatesResult;
@@ -85,6 +92,21 @@ namespace tasks_week06_webszolg
             return result;
 
             
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
         }
     }
 }
