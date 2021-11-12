@@ -33,6 +33,10 @@ namespace week08ToyFactory
             this.mainPanel = new System.Windows.Forms.Panel();
             this.createTimer = new System.Windows.Forms.Timer(this.components);
             this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
+            this.buttonCar = new System.Windows.Forms.Button();
+            this.buttonBall = new System.Windows.Forms.Button();
+            this.buttonPresent = new System.Windows.Forms.Button();
+            this.labelNext = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -57,15 +61,58 @@ namespace week08ToyFactory
             this.conveyorTimer.Interval = 10;
             this.conveyorTimer.Tick += new System.EventHandler(this.conveyorTimer_Tick);
             // 
+            // buttonCar
+            // 
+            this.buttonCar.Location = new System.Drawing.Point(23, 12);
+            this.buttonCar.Name = "buttonCar";
+            this.buttonCar.Size = new System.Drawing.Size(73, 66);
+            this.buttonCar.TabIndex = 1;
+            this.buttonCar.Text = "CAR";
+            this.buttonCar.UseVisualStyleBackColor = true;
+            this.buttonCar.Click += new System.EventHandler(this.buttonCar_Click);
+            // 
+            // buttonBall
+            // 
+            this.buttonBall.Location = new System.Drawing.Point(137, 12);
+            this.buttonBall.Name = "buttonBall";
+            this.buttonBall.Size = new System.Drawing.Size(73, 66);
+            this.buttonBall.TabIndex = 2;
+            this.buttonBall.Text = "BALL";
+            this.buttonBall.UseVisualStyleBackColor = true;
+            this.buttonBall.Click += new System.EventHandler(this.buttonBall_Click);
+            // 
+            // buttonPresent
+            // 
+            this.buttonPresent.Location = new System.Drawing.Point(257, 12);
+            this.buttonPresent.Name = "buttonPresent";
+            this.buttonPresent.Size = new System.Drawing.Size(85, 66);
+            this.buttonPresent.TabIndex = 3;
+            this.buttonPresent.Text = "PRESENT";
+            this.buttonPresent.UseVisualStyleBackColor = true;
+            // 
+            // labelNext
+            // 
+            this.labelNext.AutoSize = true;
+            this.labelNext.Location = new System.Drawing.Point(391, 13);
+            this.labelNext.Name = "labelNext";
+            this.labelNext.Size = new System.Drawing.Size(89, 17);
+            this.labelNext.TabIndex = 4;
+            this.labelNext.Text = "Coming next:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelNext);
+            this.Controls.Add(this.buttonPresent);
+            this.Controls.Add(this.buttonBall);
+            this.Controls.Add(this.buttonCar);
             this.Controls.Add(this.mainPanel);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -74,6 +121,10 @@ namespace week08ToyFactory
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Timer createTimer;
         private System.Windows.Forms.Timer conveyorTimer;
+        private System.Windows.Forms.Button buttonCar;
+        private System.Windows.Forms.Button buttonBall;
+        private System.Windows.Forms.Button buttonPresent;
+        private System.Windows.Forms.Label labelNext;
     }
 }
 
