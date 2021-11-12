@@ -68,7 +68,10 @@ namespace week08ToyFactory
 
         private void buttonBall_Click(object sender, EventArgs e)
         {
-            ToyFactory = new BallFactory();
+            ToyFactory = new BallFactory
+            {
+                BallColor = buttonColor.BackColor
+            };
         }
 
         private void DisplayNext()
