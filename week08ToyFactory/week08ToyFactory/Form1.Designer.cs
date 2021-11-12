@@ -37,6 +37,7 @@ namespace week08ToyFactory
             this.buttonBall = new System.Windows.Forms.Button();
             this.buttonPresent = new System.Windows.Forms.Button();
             this.labelNext = new System.Windows.Forms.Label();
+            this.buttonColor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -99,11 +100,22 @@ namespace week08ToyFactory
             this.labelNext.TabIndex = 4;
             this.labelNext.Text = "Coming next:";
             // 
+            // buttonColor
+            // 
+            this.buttonColor.BackColor = System.Drawing.Color.Blue;
+            this.buttonColor.Location = new System.Drawing.Point(137, 85);
+            this.buttonColor.Name = "buttonColor";
+            this.buttonColor.Size = new System.Drawing.Size(75, 23);
+            this.buttonColor.TabIndex = 5;
+            this.buttonColor.UseVisualStyleBackColor = false;
+            this.buttonColor.Click += new System.EventHandler(this.buttonColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonColor);
             this.Controls.Add(this.labelNext);
             this.Controls.Add(this.buttonPresent);
             this.Controls.Add(this.buttonBall);
@@ -125,6 +137,7 @@ namespace week08ToyFactory
         private System.Windows.Forms.Button buttonBall;
         private System.Windows.Forms.Button buttonPresent;
         private System.Windows.Forms.Label labelNext;
+        private System.Windows.Forms.Button buttonColor;
     }
 }
 
