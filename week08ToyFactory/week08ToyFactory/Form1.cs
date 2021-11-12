@@ -39,6 +39,7 @@ namespace week08ToyFactory
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
             var maxPosition = 0;
+
             foreach (var ball in _balls)
             {
                 ball.MoveToy();
