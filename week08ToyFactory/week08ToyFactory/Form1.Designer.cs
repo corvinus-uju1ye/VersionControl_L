@@ -38,6 +38,8 @@ namespace week08ToyFactory
             this.buttonPresent = new System.Windows.Forms.Button();
             this.labelNext = new System.Windows.Forms.Label();
             this.buttonColor = new System.Windows.Forms.Button();
+            this.buttonColorBox = new System.Windows.Forms.Button();
+            this.buttonColorRibbon = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -90,6 +92,7 @@ namespace week08ToyFactory
             this.buttonPresent.TabIndex = 3;
             this.buttonPresent.Text = "PRESENT";
             this.buttonPresent.UseVisualStyleBackColor = true;
+            this.buttonPresent.Click += new System.EventHandler(this.buttonPresent_Click);
             // 
             // labelNext
             // 
@@ -110,11 +113,33 @@ namespace week08ToyFactory
             this.buttonColor.UseVisualStyleBackColor = false;
             this.buttonColor.Click += new System.EventHandler(this.buttonColor_Click);
             // 
+            // buttonColorBox
+            // 
+            this.buttonColorBox.BackColor = System.Drawing.Color.Red;
+            this.buttonColorBox.Location = new System.Drawing.Point(257, 85);
+            this.buttonColorBox.Name = "buttonColorBox";
+            this.buttonColorBox.Size = new System.Drawing.Size(75, 23);
+            this.buttonColorBox.TabIndex = 6;
+            this.buttonColorBox.UseVisualStyleBackColor = false;
+            this.buttonColorBox.Click += new System.EventHandler(this.buttonColor_Click);
+            // 
+            // buttonColorRibbon
+            // 
+            this.buttonColorRibbon.BackColor = System.Drawing.Color.Yellow;
+            this.buttonColorRibbon.Location = new System.Drawing.Point(257, 125);
+            this.buttonColorRibbon.Name = "buttonColorRibbon";
+            this.buttonColorRibbon.Size = new System.Drawing.Size(75, 23);
+            this.buttonColorRibbon.TabIndex = 7;
+            this.buttonColorRibbon.UseVisualStyleBackColor = false;
+            this.buttonColorRibbon.Click += new System.EventHandler(this.buttonColor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonColorRibbon);
+            this.Controls.Add(this.buttonColorBox);
             this.Controls.Add(this.buttonColor);
             this.Controls.Add(this.labelNext);
             this.Controls.Add(this.buttonPresent);
@@ -138,6 +163,8 @@ namespace week08ToyFactory
         private System.Windows.Forms.Button buttonPresent;
         private System.Windows.Forms.Label labelNext;
         private System.Windows.Forms.Button buttonColor;
+        private System.Windows.Forms.Button buttonColorBox;
+        private System.Windows.Forms.Button buttonColorRibbon;
     }
 }
 

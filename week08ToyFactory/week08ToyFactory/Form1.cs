@@ -94,5 +94,14 @@ namespace week08ToyFactory
                 return;
             button.BackColor = colorPicker.Color;
         }
+
+        private void buttonPresent_Click(object sender, EventArgs e)
+        {
+            ToyFactory = new PresentFactory()
+            {
+                BoxColor=buttonColorBox.BackColor,
+                RibbonColor=buttonColorRibbon.BackColor
+            };
+        }
     }
 }
