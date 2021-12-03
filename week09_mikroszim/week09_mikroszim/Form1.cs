@@ -16,6 +16,9 @@ namespace week09_mikroszim
     {
         Random rng = new Random(1234);
 
+        List<int> maleList = new List<int>();
+        List<int> femaleList = new List<int>();
+
         List<Person> Population = new List<Person>();
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
@@ -23,11 +26,17 @@ namespace week09_mikroszim
         {
             InitializeComponent();
 
-            Population = GetPopulation(@"C:\Windows\Temp\nép-teszt.csv");
+            //Population = GetPopulation(@"C:\Windows\Temp\nép-teszt.csv");
             BirthProbabilities = GetBirthProbabilities(@"C:\Windows\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Windows\Temp\halál.csv");
 
-            for (int year = 2005; year <= 2024; year++)
+       
+        }
+
+        private void Simulation(int endYear, string csvPath)
+        {
+            Population = GetPopulation(csvPath);
+            for (int year = 2005; year <= endYear; year++)
             {
                 // Végigmegyünk az összes személyen
                 for (int i = 0; i < Population.Count; i++)
@@ -39,13 +48,20 @@ namespace week09_mikroszim
                 int nbrOfMales = (from x in Population
                                   where x.Gender == Gender.Male && x.IsAlive
                                   select x).Count();
+                
                 int nbrOfFemales = (from x in Population
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
-                Console.WriteLine(
-                    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+                
+                richTextBoxMain.Text+=
+                    string.Format("Szimulációs év:{0}\n\t Fiúk:{1}\n\t  Lányok:{2}\n", year, nbrOfMales, nbrOfFemales);
             }
         }
+        public void DisplayResults()
+        {
+
+        }
+
         private void SimStep(int year, Person person)
         {
             //Ha halott akkor kihagyjuk, ugrunk a ciklus következő lépésére
@@ -146,6 +162,21 @@ namespace week09_mikroszim
 
             return deathProbabilities;
 
+        }
+
+        private void buttonS_Click(object sender, EventArgs e)
+        {
+            Simulation((int)numericUpDownYear.Value, textBoxPath.Text);
+        }
+
+        private void buttonB_Click(object sender, EventArgs e)
+        {
+            var o = new OpenFileDialog();
+            o.FileName = textBoxPath.Text;
+
+            if (o.ShowDialog() != DialogResult.OK) return;
+            else
+            textBoxPath.Text = o.FileName;
         }
     }
 }
