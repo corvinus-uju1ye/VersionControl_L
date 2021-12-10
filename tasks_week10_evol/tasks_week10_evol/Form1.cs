@@ -24,6 +24,9 @@ namespace tasks_week10_evol
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
 
+            gc.AddPlayer();
+            gc.Start(true);
+
         }
     }
 }
