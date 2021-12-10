@@ -102,7 +102,7 @@ namespace week09_mikroszim
             // 
             // buttonS
             // 
-            this.buttonS.Location = new System.Drawing.Point(713, 14);
+            this.buttonS.Location = new System.Drawing.Point(713, 17);
             this.buttonS.Name = "buttonS";
             this.buttonS.Size = new System.Drawing.Size(75, 23);
             this.buttonS.TabIndex = 5;
